@@ -17,21 +17,18 @@ To run the scraper, you will need the following
 - pip install scrapy-splash
 ```
 
-You will also need to install Docker, as Docker is required to run the JavaScript built into Splash and run this command in your terminal.
+You will also need to install Docker, as Docker is required to run the JavaScript built into Splash and run this command in your terminal:
 - ``` docker run -p 8050:8050 scrapinghub/splash```
 
-```markdown
 > [!NOTE]  
-> Docker is neccessary to run the programme. You will likely need to restart your machine once Docker has downloaded. You can find the link to the relevant Docker via the Splash docs https://splash.readthedocs.io/en/latest/install.html. 
+> Docker is necessary to run the programme. You will likely need to restart your machine once Docker has downloaded. You can find the link to the relevant Docker via the Splash docs https://splash.readthedocs.io/en/latest/install.html.
 
-
-From there, adjust the setting.py file as required for where the Docker is running the splash bot on your hosted localhost or ip and its port.
+From there, adjust the setting.py file as required for where the Docker is running the splash bot on your hosted localhost or IP and its port.
 
 You can test the Docker is working by following the Docker link and seeing an image like this.
-
 ![Picture of a hosted Docker for the Splash App.](docker_image.png)
 
-One the Docker is hosted, you can run the following command
+Once the Docker is hosted, you can run the following command:
 - scrapy crawl trends
 
 This CLI command will run the script to crawl the link to the trends link. And acquire data. In the future, this will by a dynamic link, being pinged from a front end application. But for now. It is a static link for testing purposes.
@@ -43,6 +40,5 @@ Current ideas to add to the file:
 2. Find a way to make the rendering speed dynamic. Likely a recursive statement that checks if the keyword div class name is present to speed up keyword rendering speeds for front end usage.
 3. Likely add an automate scraping session to fill the other backend Socket rooms I intend to make so there's some automation for users as they visit the site.
 
-```markdown
 > [!WARNING]
-> Google is very good at randomly changing the way the /trending page works in Google Trends. So there is a solid chane at some point in the future this spider will break.
+> Google is very good at randomly changing the way the /trending page works in Google Trends. So there is a solid chance at some point in the future this spider will break.
