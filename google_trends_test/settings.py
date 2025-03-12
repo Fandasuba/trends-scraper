@@ -11,7 +11,20 @@ BOT_NAME = "google_trends_test"
 
 SPIDER_MODULES = ["google_trends_test.spiders"]
 NEWSPIDER_MODULE = "google_trends_test.spiders"
+SPLASH_URL = 'http://localhost:8050'
 
+
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy_splash.SplashCookiesMiddleware': 723,
+    'scrapy_splash.SplashMiddleware': 725,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+}
+
+SPIDER_MIDDLEWARES = {
+    'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
+}
+
+REQUEST_FINGERPRINTER_CLASS = 'scrapy_splash.SplashRequestFingerprinter'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "google_trends_test (+http://www.yourdomain.com)"
