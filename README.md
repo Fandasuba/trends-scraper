@@ -8,6 +8,9 @@ As it stands, it takes a dummy link for the United Kingdom under the sports cate
 
 The core function of the programme will write two files. The first is a general HTML scraper, which waits five seconds for the JS to effectively render the trends. You cna lower this if you wish in the trends_spider.py file. Then when it has that file, it runs a callback function on itself to then begin looping through the HTML looking for the divs we have isolated that contain text within the table. At the moment I am only interested in the keyword and trending range for my own uses, bnut you can simply Ctrl-f ```mZ3RIc``` in the HTML parsed file and see what the other divs are called and what to look for, followed by ```::text``` as that tells the spider to pick out those elements. 
 
+
+I've also added a test file that simulates fake keywords to the test for unit testing. Simply run python test.py in the CLI to get it running.
+
 ## Getting Started
 
 To run the scraper, you will need the following
