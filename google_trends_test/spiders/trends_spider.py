@@ -6,11 +6,11 @@ import json
 class TrendsSpider(scrapy.Spider):
     name = "trends"
    
-    def start_requests(self):
-        # geo = "GB"
-        # category = "17"
-        # url = f"https://trends.google.com/trends/trendingsearches/daily?geo={geo}&cat={category}&hl=en-GB"
-        url = f"https://trends.google.com/trending?geo=GB&category=17"
+    def start_requests(self, params):
+        geo = params.get('geo', 'US')
+        category = params.get('category', '17')
+
+        url = f"https://trends.google.com/trending?geo={geo}&category={category}"
        
         self.logger.info(f"Starting request to {url} via Splash")
        
