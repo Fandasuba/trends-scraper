@@ -3,8 +3,6 @@ import scrapy
 from scrapy_splash import SplashRequest
 import json
 
-params = {'geo': 'UK', 'category': '17'}
-
 class TrendsSpider(scrapy.Spider):
     name = "trends"
 
