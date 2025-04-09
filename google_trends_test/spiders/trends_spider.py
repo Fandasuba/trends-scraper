@@ -3,8 +3,12 @@ import scrapy
 from scrapy_splash import SplashRequest
 import json
 
+params = {'geo': 'UK', 'category': '17'}
+
 class TrendsSpider(scrapy.Spider):
     name = "trends"
+
+    params = {'geo': 'GB', 'category': '17'}
    
     def start_requests(self, params):
         geo = params.get('geo', 'US')
@@ -19,7 +23,7 @@ class TrendsSpider(scrapy.Spider):
             callback=self.parse,
             endpoint='render.html',
             args={
-                'wait': 5,  # Set it to this for now. Experiment with wait times later on.
+                'wait': 1.4,  # 1.4 Seems to the fastest based on tests. Anything lower causes it to not return an array filled with data.
                 'timeout': 90,
                 'images': 0,
                 'resource_timeout': 20,
@@ -38,8 +42,9 @@ class TrendsSpider(scrapy.Spider):
         trends_data = []
         for trend in response.css("tr.enOdEe-wZVHld-xMbwt"):
             keyword = trend.css("div.mZ3RIc::text").getall()
+            related = trend.css("div.k36WW span.mUIrbf-vQzf8d::text").getall()
             time_ago = trend.css("div.A7jE4::text").get()
-            trends_data.append({"keyword": keyword, "time_ago": time_ago})
+            trends_data.append({"keyword": keyword, "related": related, "time_ago": time_ago})
        
         JSONfilename = "trends.json"
         with open(JSONfilename, 'w', encoding='utf-8') as f:
